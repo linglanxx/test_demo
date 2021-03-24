@@ -155,13 +155,10 @@ int main(void)
       /* 485有无数据 */
       if(uart2flag == 1)
       {
-//          GUI_ShowString(100,10,"OK",16,1);
           HAL_GPIO_WritePin(GPIOA, GPIO_PIN_4, GPIO_PIN_SET);
           HAL_Delay(1000);
           HAL_GPIO_WritePin(GPIOA, GPIO_PIN_4, GPIO_PIN_RESET);
-//          GUI_ShowString(16,40,"485 has data",16,1);
           uart2flag = 0; 
-//          unlink_cnt = 0;
           uart_unlink_cnt = 0;
           
       }
@@ -169,7 +166,6 @@ int main(void)
       if(uart485_OK >= 3)
       {
           GUI_ShowString(100,10,"OK",16,1); 
-//          unlink_cnt = 0;
       }
          
       else
@@ -196,7 +192,6 @@ int main(void)
       {
           GUI_ShowString(100,50,"No ",16,1);
       }
-      // IO和485全部断开
       
       // IO断开
       if(IO1_Int == 0) //清完中断标志后未曾进入中断
@@ -219,11 +214,6 @@ int main(void)
           else
               io2_unlink_cnt++; 
       }
-      
-      
-      //两个IO全部断开
-      
-      //IO一直为低
      
       //485断开
       if(uart2flag == 0)
